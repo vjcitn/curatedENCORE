@@ -1,6 +1,6 @@
 Package: curatedENCORE
 Title: Collect software and metadata related to RNA binding protein experiments focusing on resources collected in NHGRI AnVIL
-Version: 0.0.3
+Version: 0.0.4
 Authors@R:
     person(given = "Vince",
            family = "Carey",

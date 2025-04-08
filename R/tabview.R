@@ -16,19 +16,20 @@ tabview = function() {
 	          file = c("file_id", "file_format", "file_ref", "associated_biosample_id.items"),
                   anvil_file = c("file_format", "file_ref", "reference_assembly.items"),
                   activity = c("activity_type", "used_biosample_id.items"), 
-                  anvil_activity=c("activity_type", "activity_id"))
+                  anvil_activity=c("activity_type", "anvil_activity_id"))
    
  tabs = avtables()
  ui = fluidPage(
   sidebarLayout(
    sidebarPanel(
     helpText("table overview for curatedENCORE"),
-    radioButtons("picked", "tables", choices=tabs$table, selected="anvil_project"), width=2
+    radioButtons("picked", "tables", choices=tabs$table, selected="project"), width=2
     ),
   mainPanel(
    tabsetPanel(
     tabPanel("data", 
      uiOutput("colbut"),
+     verbatimTextOutput("tabrep"),
      DT::dataTableOutput("thetab")
     ),
     tabPanel("about", 
@@ -60,6 +61,16 @@ server = function(input, output) {
   #checkboxGroupInput("curcols", "vbls", choices=opts, selected=opts[1:3], inline=TRUE)
   validate(need(length(colhelper[[input$picked]])>0, "waiting for column selection"))
   checkboxGroupInput("curcols", "vbls", choices=opts, selected=colhelper[[input$picked]], inline=TRUE)
+ })
+ output$tabrep = renderPrint({
+  tab = thetabgen()$tab
+  #verbatimTextOutput(sprintf("nrec %d", nrow(tab)))
+   if (input$picked == "file") stats = table(tab[["file_format"]])
+   else if (input$picked == "anvil_file") stats = table(tab[["file_format"]])
+   else if (input$picked == "activity") stats = table(tab[["activity_type"]])
+   else if (input$picked == "anvil_activity") stats = table(tab[["activity_type"]])
+   else stats = sprintf("number of records: %d", nrow(tab))
+   stats
  })
  output$line = renderPrint({ getsel() })
  }
