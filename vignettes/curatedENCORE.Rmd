@@ -1,0 +1,31 @@
+---
+title: "curatedENCORE: interfaces to ENCORE for RBP biology in AnVIL"
+shorttitle: "outlier dytection methods"
+author: "Vincent J. Carey, stvjc at channing.harvard.edu"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{curatedENCORE: interfaces to ENCORE for RBP biology in AnVIL}
+  %\VignetteEncoding{UTF-8}
+output:
+  BiocStyle::html_document:
+    highlight: pygments
+    number_sections: yes
+    theme: united
+    toc: yes
+---
+
+# Introduction
+
+This package provides examples of exploring and using resources in
+the ENCORE project resources made available in NHGRI AnVIL.
+
+We address the following concerns:
+
+- What ENCORE resources are available in AnVIL, and how can
+the Bioconductor AnVIL package be used to survey and
+retrieve them?
+
+- How can ENCORE resources be combined with other genomic
+reference data and experiments to foster discovery in RNA biology
+and its application to disease mechanisms?
