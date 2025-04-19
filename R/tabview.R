@@ -14,7 +14,7 @@ tabview = function() {
                   donor = c("donor_id", "donor_type", "phenotypic_sex", "organism_type"),
                   project = c("project_id", "principal_investigator", "title", "funded_by"),
 	          file = c("file_id", "file_format", "file_ref", "associated_biosample_id.items"),
-                  anvil_file = c("file_format", "file_ref", "reference_assembly.items"),
+                  anvil_file = c("file_format", "file_ref", "file_name", "reference_assembly.items"),
                   activity = c("activity_type", "used_biosample_id.items"), 
                   anvil_activity=c("activity_type", "anvil_activity_id"))
    
@@ -54,7 +54,8 @@ server = function(input, output) {
    })
  output$thetab = DT::renderDataTable({
   validate(need(length(input$curcols)>0, "waiting for columns"))
-  thetabgen()$tab[, input$curcols]
+  ans = thetabgen()$tab[, input$curcols]
+  datatable(ans, filter = list(position = 'top', clear = FALSE))
   })
  output$colbut = renderUI({
   opts = thetabgen()$nms
