@@ -2,6 +2,6 @@
 
 export(tabview)
 export(test)
-import(AnVIL)
+import(AnVIL , except="tags")
 import(DT)
-import(shiny)
+import(shiny, except=c("dataTableOutput", "renderDataTable"))
