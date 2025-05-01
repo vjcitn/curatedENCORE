@@ -38,6 +38,7 @@ genes are available in `rbp_cands_gr`.
 
 ```{r lkbasic, message=FALSE}
 library(curatedENCORE)
+library(GenomicRanges)
 data(rbp_cands_gr)
 rbp_cands_gr[, c("gene_id", "gene_name", "tag")]
 ```
@@ -47,7 +48,7 @@ these genes are available.  With this dataset, we have
 ENSG, ENST and ENSP identifiers.
 ```{r lktxex}
 data(rbp_cands_txex)
-rbp_cands_txex
+head(rbp_cands_txex)
 ```
 
 # Differential expression patterns in RBP knockdown experiments
