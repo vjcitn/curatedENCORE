@@ -1,6 +1,7 @@
 #' explore workspace tables
 #' @rawNamespace import(AnVIL , except="tags")
 #' @rawNamespace import(shiny, except=c("dataTableOutput", "renderDataTable"))
+#' @import AnVILBase
 #' @import DT
 #' @export
 tabview = function() {
