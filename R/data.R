@@ -27,3 +27,10 @@
 #' @note GRCh38 coordinates; a token "NT" in `rbp_cands` is not matched
 "gencode.v40.fullgene"
 
+# https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-01982-9#MOESM1
+#' RNA binding protein function annotations, localization patterns, and predicted RNA binding domains.
+#' @note Table S2 of PMID 32252787
+#' @docType data
+#' @note there is a mix of types even though data are 0/1 ... because of excel NA token.
+#' @format data.frame
+"annoRBP"
