@@ -13,4 +13,7 @@ rbp_cands
 \description{
 a set of gene symbols used in the DESeq2 artifacts in ENCORE data resourceson AnVIL
 }
+\note{
+This list of RBPs was derived from names of files in the AnVIL DUOS data snapshot for ENCORE.
+}
 \keyword{datasets}

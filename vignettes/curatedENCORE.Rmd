@@ -29,3 +29,42 @@ retrieve them?
 - How can ENCORE resources be combined with other genomic
 reference data and experiments to foster discovery in RNA biology
 and its application to disease mechanisms?
+
+# Basic reference information
+
+We inferred the names of genes coding for RNA-binding proteins (RBPs)
+from filename patterns in ENCORE.  The genomic coordinates for these
+genes are available in `rbp_cands_gr`.
+
+```{r lkbasic, message=FALSE}
+library(curatedENCORE)
+data(rbp_cands_gr)
+rbp_cands_gr[, c("gene_id", "gene_name", "tag")]
+```
+
+Additionally, the transcript names and exon locations for
+these genes are available.  With this dataset, we have
+ENSG, ENST and ENSP identifiers.
+```{r lktxex}
+data(rbp_cands_txex)
+rbp_cands_txex
+```
+
+# Differential expression patterns in RBP knockdown experiments
+
+DESeq2 analyses are provided.  An example table is:
+```{r lkdes2}
+data(demoDE)
+head(demoDE)
+```
+
+The `enhanceDE` utility will bind location and nomenclature
+information.  The tables supplied by ENCORE are identified
+only through their filenames, so an additional argument
+must be supplied to give context by naming, informally, the
+manipulated gene.  Here we verify
+that the 'knockdown' of ZNF317 has the intended effect.
+```{r lken}
+dat = enhanceDE(demoDE, "ZNF317")
+dat |> as.data.frame() |> dplyr::filter(gene_name == "ZNF317")
+```

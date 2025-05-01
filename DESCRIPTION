@@ -1,6 +1,6 @@
 Package: curatedENCORE
 Title: Collect software and metadata related to RNA binding protein experiments focusing on resources collected in NHGRI AnVIL
-Version: 0.0.6
+Version: 0.0.8
 Authors@R:
     person(given = "Vince",
            family = "Carey",
@@ -10,7 +10,7 @@ Authors@R:
 Description: Collect software and metadata related to RNA binding protein experiments focused
 	on resources collected in NHGRI AnVIL..
 Depends: R (>= 4.1.0), tools, utils
-Imports: AnVIL, AnVILGCP, shiny, DT
+Imports: AnVIL, AnVILGCP, shiny, DT, GenomicRanges, S4Vectors
 Suggests: knitr, BiocStyle, testthat, rmarkdown
 License: Artistic-2.0
 VignetteBuilder: knitr

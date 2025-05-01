@@ -59,13 +59,11 @@ server = function(input, output) {
   })
  output$colbut = renderUI({
   opts = thetabgen()$nms
-  #checkboxGroupInput("curcols", "vbls", choices=opts, selected=opts[1:3], inline=TRUE)
   validate(need(length(colhelper[[input$picked]])>0, "waiting for column selection"))
   checkboxGroupInput("curcols", "vbls", choices=opts, selected=colhelper[[input$picked]], inline=TRUE)
  })
  output$tabrep = renderPrint({
   tab = thetabgen()$tab
-  #verbatimTextOutput(sprintf("nrec %d", nrow(tab)))
    if (input$picked == "file") stats = table(tab[["file_format"]])
    else if (input$picked == "anvil_file") stats = table(tab[["file_format"]])
    else if (input$picked == "activity") stats = table(tab[["activity_type"]])
