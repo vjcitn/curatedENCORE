@@ -69,3 +69,27 @@ that the 'knockdown' of ZNF317 has the intended effect.
 dat = enhanceDE(demoDE, "ZNF317")
 dat |> as.data.frame() |> dplyr::filter(gene_name == "ZNF317")
 ```
+
+# rMATS differential splicing analysis
+
+Differential splicing analyses are  conducted with rMATS and
+the outcomes are stored as compressed tar archives.  The basic
+layout will involve five different files; see the [rMATS turbo repository](https://github.com/Xinglab/rmats-turbo):
+    
+![Schematic of rMATS results](rmatsFiles.png)
+
+In the following chunk we take one of the analyses of ZNF800
+knockdown and illustrate the layout of one 3' acceptor file.
+
+```{r doexx}
+ex = "ZNF800-BGRSLV02-RS293"
+path = get_rMATS_tgz(ex)
+path
+tf = tempfile()
+untar(path, exdir=tf)
+lkd = dir(tf, recursive=TRUE, full=TRUE)
+lkd
+a3SS = grep("A3SS", lkd, value=TRUE)
+z = data.table::fread(a3SS)
+length(unique(z$geneSymbol[z$PValue < .001]))
+```
