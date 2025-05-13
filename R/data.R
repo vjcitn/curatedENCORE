@@ -1,4 +1,7 @@
+
 #' a set of gene symbols used in the DESeq2 artifacts in ENCORE data resourceson AnVIL
+#' @rawNamespace importFrom("utils", "data", "packageDescription", "sessionInfo")
+#' @import curl
 #' @docType data
 #' @note This list of RBPs was derived from names of files in the AnVIL DUOS data snapshot for ENCORE.
 #' @format character()
